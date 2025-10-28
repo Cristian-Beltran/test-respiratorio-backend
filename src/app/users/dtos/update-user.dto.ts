@@ -3,12 +3,7 @@ import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 export class UpdateMyProfileDto {
   @IsString()
   @IsNotEmpty()
-  name: string;
-
-  @IsString()
-  @IsNotEmpty()
-  lastname: string;
-
+  fullname?: string;
   @IsString()
   @IsOptional()
   address?: string;
