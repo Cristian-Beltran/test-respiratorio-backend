@@ -19,16 +19,7 @@ async function bootstrap() {
     origin: true,
     credentials: true,
   });
-  app.use((req: any, res, next) => {
-    let data = '';
-    req.on('data', (chunk: Buffer) => (data += chunk.toString()));
-    req.on('end', () => {
-      console.log('➡️', req.method, req.originalUrl || req.url);
-      console.log('🧾 Headers:', req.headers);
-      if (data) console.log('📦 RawBody:', data);
-      next();
-    });
-  });
+
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,

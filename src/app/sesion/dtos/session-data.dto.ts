@@ -1,3 +1,4 @@
+import { Expose } from 'class-transformer';
 import {
   IsBoolean,
   IsInt,
@@ -7,46 +8,20 @@ import {
 } from 'class-validator';
 
 export class IngestSessionDto {
+  @Expose()
   @IsString()
   serialNumber: string;
 
-  // === Resp primaria ===
-  @IsOptional()
-  @IsNumber()
-  airflowValue?: number;
+  @Expose() @IsOptional() @IsNumber() airflowValue?: number;
+  @Expose() @IsOptional() @IsNumber() respBaseline?: number;
+  @Expose() @IsOptional() @IsNumber() respDiffAbs?: number;
+  @Expose() @IsOptional() @IsInt() respRate?: number;
 
-  @IsOptional()
-  @IsNumber()
-  respBaseline?: number;
+  @Expose() @IsOptional() @IsNumber() bpm?: number;
+  @Expose() @IsOptional() @IsNumber() spo2?: number;
 
-  @IsOptional()
-  @IsNumber()
-  respDiffAbs?: number;
+  @Expose() @IsOptional() @IsNumber() resp2Adc?: number;
+  @Expose() @IsOptional() @IsBoolean() resp2Positive?: boolean;
 
-  @IsOptional()
-  @IsInt()
-  respRate?: number;
-
-  // === Cardiaco / SpO2 ===
-  @IsOptional()
-  @IsNumber()
-  bpm?: number;
-
-  @IsOptional()
-  @IsNumber()
-  spo2?: number;
-
-  // === Resp secundaria ===
-  @IsOptional()
-  @IsNumber()
-  resp2Adc?: number;
-
-  @IsOptional()
-  @IsBoolean()
-  resp2Positive?: boolean;
-
-  // === Legado (si tu front lo sigue enviando) ===
-  @IsOptional()
-  @IsNumber()
-  micAirValue?: number;
+  @Expose() @IsOptional() @IsNumber() micAirValue?: number;
 }

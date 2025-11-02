@@ -19,8 +19,9 @@ export class SessionController {
    * Ingesta de 1 muestra desde el ESP32 (create-or-append a la sesión del día).
    */
   @Post('ingest')
-  ingest(@Body() dto: IngestSessionDto) {
-    return this.service.ingest(dto);
+  ingest(@Body() data) {
+    console.log(data);
+    return this.service.ingest(data);
   }
 
   /**
