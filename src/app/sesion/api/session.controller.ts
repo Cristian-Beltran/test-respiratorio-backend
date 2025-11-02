@@ -8,7 +8,6 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/context/shared/guards/jwt-auth.guard';
 import { SessionService } from '../services/session.service';
 import { IngestSessionDto } from '../dtos/session-data.dto';
 

@@ -1,6 +1,5 @@
 import {
   IsBoolean,
-  IsDateString,
   IsInt,
   IsNumber,
   IsOptional,
@@ -10,11 +9,6 @@ import {
 export class IngestSessionDto {
   @IsString()
   serialNumber: string;
-
-  // epoch en ms; opcional (si no viene, tomamos recordedAt o Date.now)
-  @IsOptional()
-  @IsInt()
-  ts?: number;
 
   // === Resp primaria ===
   @IsOptional()
@@ -55,9 +49,4 @@ export class IngestSessionDto {
   @IsOptional()
   @IsNumber()
   micAirValue?: number;
-
-  // ISO opcional; si viene, tiene prioridad sobre ts
-  @IsOptional()
-  @IsDateString()
-  recordedAt?: string;
 }

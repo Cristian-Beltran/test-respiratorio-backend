@@ -4,6 +4,7 @@ import {
   Column,
   ManyToOne,
   Index,
+  CreateDateColumn,
 } from 'typeorm';
 import { Session } from './session.entity';
 
@@ -47,6 +48,6 @@ export class SessionData {
   @Column('float', { nullable: true })
   micAirValue: number;
 
-  @Column({ type: 'timestamp' })
+  @CreateDateColumn()
   recordedAt: Date;
 }

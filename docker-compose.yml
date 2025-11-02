@@ -23,14 +23,14 @@ services:
   mosquitto:
     image: eclipse-mosquitto:2
     container_name: mosquitto
-    restart: unless-stopped
-    ports:
-      - '1883:1883' # MQTT TCP (para ESP32 si usas TCP)
-      - '9001:9001' # MQTT sobre WebSocket (frontend)
+    restart: always
     volumes:
-      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./mosquitto/config:/mosquitto/config
       - ./mosquitto/data:/mosquitto/data
       - ./mosquitto/log:/mosquitto/log
+    ports:
+      - '9001:9001' # MQTT sobre WebSocket para el frontend
+      - '1883:1883' # (opcional) MQTT TCP (por si luego quieres usarlo)
 
 volumes:
   postgres_data:
